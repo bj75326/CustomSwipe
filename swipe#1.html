@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swipe for Mobile</title>
+    <meta name="viewport" charset="utf-8"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=1.0">
+    <link rel="stylesheet prefetch"
+          href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900|Material+Icons">
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            color: #fff;
+            font-family: "Source Code Pro", Consolas, monospace;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow: hidden; /**/
+        }
+
+        .wrapper {
+            width: 600%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            display: -moz-box;
+            display: -webkit-box;
+            display: box;
+        }
+
+        .pageview {
+            -moz-box-flex: 1;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+        }
+
+        .wrapper .pageview:nth-child(1) {
+            background: #000000;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #000000, #434343);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #000000, #434343);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .wrapper .pageview:nth-child(2) {
+            background: #4B79A1;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #4B79A1, #283E51);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #4B79A1, #283E51);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .wrapper .pageview:nth-child(3) {
+            background: #fd746c;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #fd746c, #ff9068);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #fd746c, #ff9068);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .wrapper .pageview:nth-child(4) {
+            background: #304352;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #304352, #d7d2cc);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #304352, #d7d2cc);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .wrapper .pageview:nth-child(5) {
+            background: #485563;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #485563, #29323c);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #485563, #29323c);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .wrapper .pageview:nth-child(6) {
+            background: #C9FFBF;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #C9FFBF, #FFAFBD);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #C9FFBF, #FFAFBD);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .pageview > div {
+            margin-top: 34vh;
+            opacity: 0;
+            width: 50vw;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        .pageview.now > div {
+            margin-top: 30vh;
+            opacity: 1;
+        }
+
+        .pagenumber {
+            display: -moz-box;
+            display: -webkit-box;
+            display: box;
+            position: absolute;
+            bottom: 5vh;
+            left: 35%;
+            width: 30%;
+            height: 2em;
+        }
+
+        .pagenumber>div {
+            -moz-box-flex: 1;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+            position: relative;
+        }
+
+        .pagenumber>div:after{
+            content: "";
+            width: .4em;
+            height: .4em;
+            border-radius: 2em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -.2em;
+            margin-top: -.2em;
+            background-color: rgba(255,255,255,.5);
+        }
+
+        .pagenumber>div.now:after{
+            background-color: rgba(255,255,255, 1);
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="pageview now">
+        <div>
+            <h2>Slide 1</h2>
+            <p1>
+                <h3>Deep Space</h3>
+
+                <div>Color 1 #000000</div>
+                <div>Color 2 #434343</div>
+            </p1>
+        </div>
+    </div>
+    <div class="pageview">
+        <div>
+            <h2>Slide 2</h2>
+            <p1>
+                <h3>Dark Skies</h3>
+
+                <div>Color 1 #4B79A1</div>
+                <div>Color 2 #283E51</div>
+            </p1>
+        </div>
+    </div>
+    <div class="pageview">
+        <div>
+            <h2>Slide 3</h2>
+            <p1>
+                <h3>Haikus</h3>
+
+                <div>Color 1 #fd746c</div>
+                <div>Color 2 #ff9068</div>
+            </p1>
+        </div>
+    </div>
+    <div class="pageview">
+        <div>
+            <h2>Slide 4</h2>
+            <p1>
+                <h3>Lizard</h3>
+
+                <div>Color 1 #304352</div>
+                <div>Color 2 #d7d2cc</div>
+            </p1>
+        </div>
+    </div>
+    <div class="pageview">
+        <div>
+            <h2>Slide 5</h2>
+            <p1>
+                <h3>ServQuick</h3>
+
+                <div>Color 1 #485563</div>
+                <div>Color 2 #29323c</div>
+            </p1>
+        </div>
+    </div>
+    <div class="pageview">
+        <div>
+            <h2>Slide 6</h2>
+            <p1>
+                <h3>Virgin</h3>
+
+                <div>Color 1 #C9FFBF</div>
+                <div>Color 2 #FFAFBD</div>
+            </p1>
+        </div>
+    </div>
+</div>
+<div class="pagenumber">
+    <div class="now"></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+    <div class=""></div>
+</div>
+<script type="text/javascript">
+    var Bin = {
+        on: function (element, type, handler, userCapture) {
+            if (document.attachEvent) {
+                element.attachEvent("on" + type, handler);
+            } else if (document.addEventListener) {
+                element.addEventListener(type, handler, userCapture);
+            }
+        },
+
+        off: function (element, type, handler, userCapture) {
+            if (document.detachEvent) {
+                element.detachEvent("on" + type);
+            } else if (document.removeEventListener) {
+                element.removeEventListener(type, handler, userCapture);
+            }
+        },
+
+        eventDispatch: function (element, type, customProperty) {
+            if (document.fireEvent) {
+                var event = document.createEventObject();
+                event.eventType = tyoe;
+                event.dispatchFlag = true;
+                element.fireEvent("on" + type, event);
+            } else if (document.dispatchEvent) {
+                var event = new MouseEvent(type, {
+                    "view": window,
+                    "bubbles": true,
+                    "cancelable": true
+                });
+                event.dispatchFlag = true;
+                if (customProperty) {
+                    for (var key in customProperty) {
+                        if (!(key in event)) {
+                            event[key] = customProperty[key];
+                        }
+                    }
+                }
+                element.dispatchEvent(event);
+            }
+        },
+
+        ready: function (fn) {
+            if (document.attachEvent) {
+                document.attachEvent("onreadystatechange", function () {
+                    if (document.readyState == "complete") {
+                        document.detachEvent("onreadytstatechange", arguments.callee);
+                        fn();
+                    }
+                });
+            } else if (document.addEventListener) {
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.removeEventListener("DOMContentLoaded", arguments.callee, false);
+                    fn();
+                }, false);
+            }
+        },
+
+        debounce: function(idle, action){
+            var last;
+            return function(){
+                var ctx = this;
+                var argu = arguments;
+                clearTimeout(last);
+                last = setTimeout(function(){
+                    action.apply(ctx, argu);
+                }, idle);
+            };
+        },
+
+        throttle: function(delay, action){
+            var last = 0;
+            return function(){
+                var curr = +new Date();
+                if(curr-last > delay){
+                    action.apply(this, arguments);
+                    last = curr;
+                }
+            }
+        },
+
+        getBrowserInfo: function(){
+            var result = {};
+
+            var m = window.navigator.userAgent.toLowerCase().match(/(msie|firefox|chrome|opera|version).*?([\d.]+)/);
+            m[1].replace(/version/, "safari");
+
+            result.browser = m[1];
+            result.version = m[2];
+
+            return result;
+        },
+
+        isPC: function(){
+            var flag = true;
+            var Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+            var ua = window.navigator.userAgent;
+            Agents.forEach(function(value){
+                if(ua.indexOf(value) > -1){
+                    flag = false;
+                }
+            });
+            return flag;
+        }
+
+
+    };
+
+    var Swipe = function(options){
+
+        /*options = {
+         *      scope: "",
+         *      callback: function(){}
+         * }
+         */
+        if(!options){ options = {};}
+
+        var wrapper = document.querySelector( options.scope || ".wrapper" );
+        var pageviews = wrapper.querySelectorAll(".pageview");
+        var subs = document.querySelectorAll(".pagenumber div");
+
+        var transform = function(pos){
+            this.style.transform = "translate3d(" + pos + "px, 0, 0)";
+        };
+
+        if(Bin.isPC()){
+            document.write("Please check on the mobile device...");
+        //if(void 0){
+        }else{
+            //init
+            var width = window.innerWidth;
+            var length = subs.length;
+
+            var startX, startY, timestamp;
+
+            var currentPos = 0;
+
+            //scope for touchmove distance
+            var maxWidth = -1 * (length - 1) * width;
+
+            var isMove = false;
+            var moveLength;
+            var direction;
+
+            //touchstart event bind.
+            Bin.on(document, "touchstart", function(ev){
+                var event = ev || window.event;
+                console.log("touchstart");
+                console.log(event);
+                event.preventDefault();
+                var touch = event.touches[0];
+                //console.log(touch);
+                startX = touch.pageX;
+                startY = touch.pageY;
+                timestamp = +new Date();
+
+                wrapper.style.transition = "";
+
+                isMove = false;
+            }, false);
+
+            //touchmove event bind.
+            Bin.on(document, "touchmove", function(ev){
+                var event = ev || window.event;
+                console.log("touchmove");
+                console.log(event);
+                event.preventDefault();
+                var touch = event.touches[0];
+                var deltaX = touch.pageX - startX;
+                var deltaY = touch.pageY - startY;
+
+                //once Math.abs(deltaX) > Math.abs(deltaY) then should be right-left move.
+                if(Math.abs(deltaX) > Math.abs(deltaY)){
+
+                    var newPos = currentPos + deltaX;
+                    if(newPos < 0 && newPos > maxWidth){
+                        transform.call(wrapper, newPos);
+
+                        isMove = true;
+                        moveLength = deltaX;
+                        direction = deltaX > 0 ? "right" : "left";
+                    }
+                }
+            }, false);
+
+            //touchend event bind.
+            Bin.on(document, "touchend", function(ev){
+                var event = ev || window.event;
+                console.log(event);
+                event.preventDefault();
+
+                var deltaTime = +new Date() - timestamp;
+                if(isMove){
+                    wrapper.style.transition = "0.3s ease transform";
+                    if(deltaTime < 300){
+                        //if deltaTime < 300 && isMove === true, wrapper will move to adjacent pageview.
+                        var finalPos = direction === "left" ? currentPos - width : currentPos + width ;
+                        transform.call(wrapper, finalPos);
+                        currentPos = finalPos;
+                    }else{
+                        //if deltaTime >=300 && isMove === true
+                        //case#1: Math.abs(moveLength) < width/2
+                        if(Math.abs(moveLength) < width/2){
+                            transform.call(wrapper, currentPos);
+                        }
+                        //case#2: Math.abs(moveLength) > width/2
+                        if(Math.abs(moveLength) >= width/2){
+                            var finalPos = direction === "left" ? currentPos - width : currentPos + width;
+                            transform.call(wrapper, finalPos);
+                            currentPos = finalPos;
+                        }
+                    }
+                    //Page number check
+                    setTimeout(function(){
+                        for(var i= 0; i<length; i++ ){
+                            subs[i].setAttribute("class", "");
+                        }
+                        subs[Math.abs(currentPos/width)].setAttribute("class", "now");
+
+                    }, 100);
+                    //options.callback check
+                    if(options.callback){
+                        setTimeout(function(){
+                            options.callback.apply(window, [wrapper, pageviews[Math.abs(currentPos/width)]]);
+                        }, 150);
+                    }
+                }
+            }, false);
+        }
+    };
+
+    Bin.ready(function () {
+        Swipe({callback: function(wrapper, now){
+            var pageviews = wrapper.querySelectorAll(".pageview");
+            for(var i= 0, len=pageviews.length; i<len; i++){
+                var curr = pageviews[i];
+                var currClass = curr.getAttribute("class");
+                if( curr !== now){
+                    currClass.indexOf("now") === -1 || curr.setAttribute("class", currClass.replace('now', "").replace(/(^\s+)|(\s+$)/g, ""));
+                }else{
+                    currClass.indexOf("now") === -1 && curr.setAttribute("class", currClass.replace(/(^\s+)|(\s+$)/g, "") + " now");
+                }
+            }
+        }});
+    });
+
+</script>
+</body>
+</html>
